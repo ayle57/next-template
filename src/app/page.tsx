@@ -1,5 +1,3 @@
 export default function Home() {
-  return (
-      <p>Template NextJS</p>
-  );
+  return <p>hello world</p>
 }
