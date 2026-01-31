@@ -1,3 +1,7 @@
+import React from "react";
+
 export default function Home() {
-  return <p>hello world</p>
+  return <React.Fragment>
+    <p>hello world</p>
+  </React.Fragment>
 }

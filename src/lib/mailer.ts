@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import { env } from "./env";
 
 type MailHeaders = {
     subject: string;
@@ -27,19 +27,12 @@ export async function send(
     headers: MailHeaders,
     body: string
 ) {
-    const MAILJET_API_KEY = process.env.MAILJET_API_KEY;
-    const MAILJET_SECRET_KEY = process.env.MAILJET_SECRET_KEY;
-
-    if (!MAILJET_API_KEY || !MAILJET_SECRET_KEY) {
-        throw new Error('Mailjet API keys are missing in environment variables.');
-    }
-
     const res = await fetch('https://api.mailjet.com/v3.1/send', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization:
-                'Basic ' + Buffer.from(`${MAILJET_API_KEY}:${MAILJET_SECRET_KEY}`).toString('base64'),
+                'Basic ' + Buffer.from(`${env.MAILJET_API}:${env.MAILJET_SECRET}`).toString('base64'),
         },
         body: JSON.stringify({
             Messages: [
