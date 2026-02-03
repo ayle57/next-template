@@ -1,7 +1,7 @@
 "use server";
 
-export async function submitContact(formData: FormData) {
-    const data = Object.fromEntries(formData.entries());
+export async function submitContact(data: Record<string, string>) {
+    console.log("Données validées côté serveur :", data);
 
-    console.log(data);
+    return { success: true };
 }
